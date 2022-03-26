@@ -1,0 +1,13 @@
+#menu{
+  left: 4% !important;
+}
+
+.navBar{
+  background-color: #292f4c;
+}
+
+@media (min-width: 1000px) {
+  .navBar {
+    display: none;
+  }
+}
