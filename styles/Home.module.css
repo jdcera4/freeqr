@@ -29,3 +29,12 @@
   width: 95%;
   margin: 20px;
 }
+
+@media (max-width: 1000px) {
+  .row{
+    flex-direction: column;
+  }
+  .col{
+    width: 100%;
+  }
+}
