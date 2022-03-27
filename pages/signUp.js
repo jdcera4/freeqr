@@ -27,30 +27,28 @@ export default function Login(){
   }
 
     return (
-      <Layout>
-        <div className="row" style={{marginTop: '100px', background: 'gray', width: '90%'}}>
+<Layout>
+        <div className="row" id={styles.container}>
           <form className="col s12" onSubmit={
             e => {e.preventDefault()
               credentials(email, password)
             }}>
             <div className="row">
               <div className="input-field col s12">
-                <label forhtml="password">Password</label>
-                <input id="password" type="password" className="validate" onChange={e => setPassword(e.target.value)}/> 
+                <input id="email" type="email" className="validate" onChange={e => setEmail(e.target.value)} placeholder='Email'/>
               </div>
             </div>
             <div className="row">
               <div className="input-field col s12">
-                <input id="email" type="email" className="validate" onChange={e => setEmail(e.target.value)}/>
-                <label forhtml="email">Email</label>
+                <input id="password" type="password" className="validate" onChange={e => setPassword(e.target.value)} placeholder='Password'/> 
               </div>
-            </div>
+            </div>  
             <div className="row">
               <div className="input-field col s12">
                 <button className="btn" id={styles.button}>Submit</button>
-                <div className='btn'>
+                <div className='btn' id={styles.authbtn}>
                   <Link href='/auth'>Login</Link>
-                </div> 
+                </div>    
               </div>
             </div>
           </form>
