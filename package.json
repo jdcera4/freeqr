@@ -12,7 +12,6 @@
     "firebase": "^9.6.10",
     "materialize-css": "^1.0.0-rc.2",
     "next": "12.1.0",
-    "next-firebase-auth": "^1.0.0-canary.7",
     "qrcode.react": "^2.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
