@@ -1,4 +1,4 @@
-import {init} from 'next-fireba'
+import { init } from 'next-firebase-auth'
 
 const initAuth = ()=> {
   init({
