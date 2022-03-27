@@ -3,6 +3,19 @@ import { useState } from 'react'
 import QRCode from 'qrcode.react';
 import Image from 'next/image';
 import img from '../public/images/files-white.89efadaf.png'
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+
+function uploadFile(file, name){
+  const storage = getStorage();
+  const storageRef = ref(storage,name);
+
+  uploadBytes(storageRef, file).then((snapshot) => {
+    console.log('Uploaded a blob or file!');
+    console.info(snapshot)
+  }).catch((err) => {
+    console.error(err)
+  });
+}
 
 export default function Content(){
   const [file, setFile] = useState('hola')
@@ -32,7 +45,10 @@ export default function Content(){
                       <div className="o-pdf-icon" style={{marginTop: '20px'}}>
                         <Image src={img} alt="Files" width={50} height={50} />
                       </div>
-                      <input type="file" multiple onChange={e => setFile(e.target.value)} />
+                      <input type="file" multiple onChange={e => {
+                        setFile(e.target.files[0])
+                        uploadFile(e.target.files[0], e.target.files[0].name)
+                        }} />
                     </div>
                       <input   />
                   </div>
