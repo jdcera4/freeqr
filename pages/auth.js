@@ -3,6 +3,16 @@ import Layout from '../components/appLayaout'
 import styles from '../styles/Login.module.css'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { redirect } from 'next/dist/server/api-utils';
+import { useRouter } from 'next/router'
+
+// eslint-disable-next-line react-hooks/rules-of-hooks
+
+
+export default function Login(){
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const router = useRouter()
 
 function credentials(email, password){
   const auth = getAuth();
@@ -10,7 +20,7 @@ function credentials(email, password){
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      redirect('/signUp')
+      router.push('/')
       // ...
     })
     .catch((error) => {
@@ -18,15 +28,11 @@ function credentials(email, password){
       const errorMessage = error.message;
       alert(error)
     });
-}
+  }
 
-
-export default function Login(){
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
     return (
       <Layout>
-        <div className="row" style={{marginTop: '100px', background: 'gray', width: '90%'}}>
+        <div className="row" id={styles.container}>
           <form className="col s12" onSubmit={
             e => {e.preventDefault()
               credentials(email, password)
@@ -44,6 +50,9 @@ export default function Login(){
             <div className="row">
               <div className="input-field col s12">
                 <button className="btn" id={styles.button}>Submit</button>
+                <div className='btn' id={styles.authbtn}>
+                  <a href='/signUp'>SignUp</a>
+                </div>    
               </div>
             </div>
           </form>

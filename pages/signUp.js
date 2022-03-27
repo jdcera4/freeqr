@@ -2,26 +2,29 @@ import { useState } from 'react';
 import Layout from '../components/appLayaout'
 import styles from '../styles/Login.module.css'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
-function credentials(email, password){
-  const auth = getAuth();
-  createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    alert(error)
-  });
-}
-
+import { useRouter } from 'next/router';
 
 export default function Login(){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const router = useRouter()
+
+  function credentials(email, password){
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      router.push('/')
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(error)
+    });
+  }
+
     return (
       <Layout>
         <div className="row" style={{marginTop: '100px', background: 'gray', width: '90%'}}>
@@ -44,6 +47,9 @@ export default function Login(){
             <div className="row">
               <div className="input-field col s12">
                 <button className="btn" id={styles.button}>Submit</button>
+                <div className='btn'>
+                  <a href='/auth'>Login</a>
+                </div> 
               </div>
             </div>
           </form>
