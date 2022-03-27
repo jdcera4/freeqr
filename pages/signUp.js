@@ -3,7 +3,7 @@ import Layout from '../components/appLayaout'
 import styles from '../styles/Login.module.css'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from 'next/router';
-import {Link} from 'next/link'
+import Link from 'next/link'
 
 export default function Login(){
   const [email, setEmail] = useState('')

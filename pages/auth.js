@@ -3,7 +3,7 @@ import Layout from '../components/appLayaout'
 import styles from '../styles/Login.module.css'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from 'next/router'
-import {Link} from 'next/link'
+import Link from 'next/link'
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 
