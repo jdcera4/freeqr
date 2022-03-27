@@ -33,14 +33,14 @@ export default function Login(){
             }}>
             <div className="row">
               <div className="input-field col s12">
-                <input id="password" type="password" className="validate" onChange={e => setPassword(e.target.value)} placeholder='Password'/> 
+                <input id="email" type="email" className="validate" onChange={e => setEmail(e.target.value)} placeholder='Email'/>
               </div>
             </div>
             <div className="row">
               <div className="input-field col s12">
-                <input id="email" type="email" className="validate" onChange={e => setEmail(e.target.value)} placeholder='Email'/>
+                <input id="password" type="password" className="validate" onChange={e => setPassword(e.target.value)} placeholder='Password'/> 
               </div>
-            </div>
+            </div>  
             <div className="row">
               <div className="input-field col s12">
                 <button className="btn" id={styles.button}>Submit</button>
