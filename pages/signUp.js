@@ -3,6 +3,7 @@ import Layout from '../components/appLayaout'
 import styles from '../styles/Login.module.css'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from 'next/router';
+import {Link} from 'next/link'
 
 export default function Login(){
   const [email, setEmail] = useState('')
@@ -48,7 +49,7 @@ export default function Login(){
               <div className="input-field col s12">
                 <button className="btn" id={styles.button}>Submit</button>
                 <div className='btn'>
-                  <a href='/auth'>Login</a>
+                  <Link href='/auth'>Login</Link>
                 </div> 
               </div>
             </div>
