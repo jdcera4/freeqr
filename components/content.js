@@ -19,12 +19,12 @@ function uploadFile(file, name){
 
 export default function Content(){
   const [file, setFile] = useState('hola')
+  const nameFiles = [file.name];
 
   const downloadQRCode = () => {
     const qrCodeURL = document.getElementById('qrCodeEl')
       .toDataURL("image/png")
       .replace("image/png", "image/octet-stream");
-    console.log(qrCodeURL)
     let aEl = document.createElement("a");
     aEl.href = qrCodeURL;
     aEl.download = "QR_Code.png";
@@ -48,12 +48,14 @@ export default function Content(){
                       <input type="file" multiple onChange={e => {
                         setFile(e.target.files[0])
                         uploadFile(e.target.files[0], e.target.files[0].name)
+                        
                         }} />
                     </div>
                       <input   />
                   </div>
                 </form>
               </div>
+              {nameFiles}
             </div>
       </div>
       <div className={styles.col}>
