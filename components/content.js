@@ -61,7 +61,7 @@ export default function Content(){
       <div className={styles.col}>
         <h1 className={styles.title}>2.Obtén Tu Código QR</h1>
         <div className="card-content white-text" style={{textAlign: 'center'}}>
-          <QRCode id="qrCodeEl" value="www.youtube.com" title='hola' level='H' size={300} />
+          <QRCode id="qrCodeEl" value="https://freeqr-jdcera4.vercel.app/qr" title='hola' level='Q' size={300} />
         </div>
           <input
             type="button"
