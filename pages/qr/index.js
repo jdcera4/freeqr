@@ -11,7 +11,7 @@ export default function qr() {
       <div>
         <p style={{textAlign: 'center', fontSize: '40px'}}>Sube tu menú y genera tu codigo qr</p>
       </div>
-      <div className='btn' style={{width: '100%'}}>
+      <div className='btn indigo darken-4' style={{width: '100%'}}>
         <Link href="/">Generar QR</Link>
       </div>
     </div>
