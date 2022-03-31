@@ -27,7 +27,7 @@ export default function Login(){
   }
 
     return (
-<Layout>
+      <Layout>
         <div className="row" id={styles.container}>
           <form className="col s12" onSubmit={
             e => {e.preventDefault()
@@ -47,7 +47,7 @@ export default function Login(){
               <div className="input-field col s12">
                 <button className="btn" id={styles.button}>Submit</button>
                 <div className='btn' id={styles.authbtn}>
-                  <Link href='/auth'>Login</Link>
+                  <Link href='/auth' style={{width: '100%'}}>Login</Link>
                 </div>    
               </div>
             </div>

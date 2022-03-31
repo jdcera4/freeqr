@@ -1,6 +1,6 @@
 import { useEffect, useContext } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase";
+import { getAuth } from "firebase/auth";
 import { useRouter } from "next/router";
 import AuthContext from "../context/AuthContext";
 
@@ -8,6 +8,8 @@ import AuthContext from "../context/AuthContext";
 
 export const useAuthUser = () => {
   const { push, pathname } = useRouter();
+
+  const auth = getAuth()
 
   const { setisLogged } = useContext(AuthContext);
 

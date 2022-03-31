@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import Layout from '../components/appLayaout'
 import styles from '../styles/Login.module.css'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+
+import { getAuth } from 'firebase/auth'
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 
@@ -14,9 +16,9 @@ export default function Login(){
 
   const router = useRouter()
 
-function credentials(email, password){
-  const auth = getAuth();
-  signInWithEmailAndPassword(auth, email, password)
+  function credentials(email, password){
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
@@ -51,7 +53,7 @@ function credentials(email, password){
               <div className="input-field col s12">
                 <button className="btn" id={styles.button}>Submit</button>
                 <div className='btn' id={styles.authbtn}>
-                  <Link href='/signUp'>SignUp</Link>
+                  <Link href='/signIn' style={{width: '100%'}}>SignIn</Link>
                 </div>    
               </div>
             </div>

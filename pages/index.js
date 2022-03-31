@@ -4,10 +4,11 @@ import Loyaut from '../components/appLayaout'
 import LateralMenu from '../components/lateralMenu'
 
 export default function Home() {
+
   return (
     <Loyaut>
       <NavBar />
-      <LateralMenu />
+      <LateralMenu/>
       <Content />
     </Loyaut>
   )
