@@ -13,7 +13,7 @@ export default function LateralMenu(){
       </div>
       <div className={styles.menus}>
         <h2 className={styles.title}>Menús</h2>
-        <button className={styles.title} style={{marginTop: '80px'}} >
+        <button className='btn indigo darken-4' style={{position:'absolute', bottom: '20px', width: '180px', marginLeft: '80px'}} >
           <Link  href='/auth'>Logout</Link>
         </button>
       </div>
