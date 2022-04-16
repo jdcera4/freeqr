@@ -1,13 +1,16 @@
 import styles from '../styles/Home.module.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import QRCode from 'qrcode.react';
 import Image from 'next/image';
 import img from '../public/images/files-white.89efadaf.png'
 import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { useRouter } from 'next/router'
 
-function uploadFile(file, name){
+import {getAuth} from 'firebase/auth';
+
+function uploadFile(file, name, id){
   const storage = getStorage();
-  const storageRef = ref(storage,name);
+  const storageRef = ref(storage, `${id}/${name}`);
 
   uploadBytes(storageRef, file).then((snapshot) => {
     console.log('Uploaded a blob or file!');
@@ -20,6 +23,16 @@ function uploadFile(file, name){
 export default function Content(){
   const [file, setFile] = useState('hola')
   const nameFiles = [file.name];
+  const [id, setId] = useState('')
+  const router = useRouter()
+
+  useEffect(() => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user) setId(user.uid)
+    else router.push('/auth')
+    
+  }, [])
 
   const downloadQRCode = () => {
     const qrCodeURL = document.getElementById('qrCodeEl')
@@ -47,7 +60,7 @@ export default function Content(){
                       </div>
                       <input type="file" multiple onChange={e => {
                         setFile(e.target.files[0])
-                        uploadFile(e.target.files[0], e.target.files[0].name)
+                        uploadFile(e.target.files[0], e.target.files[0].name, id)
                         
                         }} />
                     </div>
@@ -61,7 +74,7 @@ export default function Content(){
       <div className={styles.col}>
         <h1 className={styles.title}>2.Obtén Tu Código QR</h1>
         <div className="card-content white-text" style={{textAlign: 'center'}}>
-          <QRCode id="qrCodeEl" value="https://freeqr-jdcera4.vercel.app/qr" title='hola' level='Q' size={300} />
+          <QRCode id="qrCodeEl" value={`https://freeqr-jdcera4.vercel.app/qr/${id}`} title='hola' level='Q' size={300} />
         </div>
           <input
             type="button"

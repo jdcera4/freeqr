@@ -21,13 +21,14 @@ export default function Login(){
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
-      const user = userCredential.user;
+      const user = userCredential.user 
+      console.log(user)
       router.push('/')
       // ...
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      const errorCode = error.code
+      const errorMessage = error.message
       alert(error)
     });
   }
