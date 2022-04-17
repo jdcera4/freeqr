@@ -1,6 +1,5 @@
 import Layout from '../../components/appLayaout'
 import Link from 'next/link'
-import styles from '../../styles/qr.module.css'
 
 export default function qr() {
   return (
